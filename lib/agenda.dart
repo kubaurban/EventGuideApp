@@ -1,7 +1,7 @@
 import 'package:event_guide/data/agenda-item.dart';
 import 'package:flutter/material.dart';
 
-import 'agenda-item-tile.dart';
+import 'agenda-item-tile/agenda-item-tile.dart';
 
 class Agenda extends StatelessWidget {
   const Agenda({super.key, required this.items});
