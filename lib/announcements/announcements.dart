@@ -4,12 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../data/messages/data-source.dart';
+import '../nav-bar/nav-bar.dart';
 import 'message-box.dart';
 import 'message-list.dart';
 import 'messenger-cubit.dart';
 
-class Announcements extends StatelessWidget {
+class Announcements extends StatefulWidget {
   const Announcements({super.key});
+
+  @override
+  State<Announcements> createState() => _AnnouncementsState();
+}
+
+class _AnnouncementsState extends State<Announcements> {
+  final String title = 'Announcements';
+
+  bool navBarVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +28,34 @@ class Announcements extends StatelessWidget {
         firestore: FirebaseFirestore.instance,
       ),
       child: BlocProvider(
-        create: (context) => MessengerCubit(
-          dataSource: context.read(),
-        )..refresh(),
-        child: Column(
-          children: const [
-            Expanded(
-              child: MessageList(),
+          create: (context) => MessengerCubit(
+                dataSource: context.read(),
+              )..refresh(),
+          child: Material(
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(title),
+                leading: GestureDetector(
+                  onTap: () => setState(() => navBarVisible = !navBarVisible),
+                  child: const Icon(Icons.menu),
+                ),
+              ),
+              body: Stack(children: [
+                Column(
+                  children: const [
+                    Expanded(
+                      child: MessageList(),
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                    ),
+                    MessageBox(),
+                  ],
+                ),
+                if (navBarVisible) const NavBar()
+              ]),
             ),
-            Divider(
-              color: Colors.grey,
-            ),
-            MessageBox(),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

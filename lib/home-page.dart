@@ -1,21 +1,30 @@
-import 'package:event_guide/agenda.dart';
+import 'package:event_guide/nav-bar/nav-bar.dart';
 import 'package:flutter/material.dart';
 
-import 'announcements/announcements.dart';
-import 'data/agenda/first-day.dart';
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  final String title = 'Event Name Home Page';
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final String title = 'Event Name';
+  bool navBarVisible = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Material(
+      child: Scaffold(
         appBar: AppBar(
           title: Text(title),
+          leading: GestureDetector(
+            onTap: () => setState(() => navBarVisible = !navBarVisible),
+            child: const Icon(Icons.menu),
+          ),
         ),
-        body: const Announcements());
-    // body: const Agenda(items: firstDay));
+        body: navBarVisible ? const NavBar() : Container(),
+      ),
+    );
   }
 }
