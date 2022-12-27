@@ -1,3 +1,4 @@
+import 'package:event_guide/agenda.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,19 +9,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Hello world!',
-            ),
-          ],
+        appBar: AppBar(
+          title: Text(title),
         ),
-      ),
-    );
+        body: const Agenda());
   }
 }
