@@ -1,4 +1,4 @@
-import 'package:event_guide/agenda.dart';
+import 'package:event_guide/agenda/agenda.dart';
 import 'package:event_guide/announcements/announcements.dart';
 import 'package:event_guide/data/agenda/first-day.dart';
 import 'package:event_guide/home-page.dart';

@@ -2,7 +2,7 @@ import 'package:event_guide/data/agenda-item.dart';
 import 'package:flutter/material.dart';
 
 import 'agenda-item-tile/agenda-item-tile.dart';
-import 'nav-bar/nav-bar.dart';
+import '../nav-bar/nav-bar.dart';
 
 class Agenda extends StatefulWidget {
   const Agenda({super.key, required this.title, required this.items});

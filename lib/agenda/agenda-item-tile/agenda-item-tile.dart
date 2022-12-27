@@ -1,4 +1,4 @@
-import 'package:event_guide/agenda-item-tile/agenda-item-tile-header.dart';
+import 'package:event_guide/agenda/agenda-item-tile/agenda-item-tile-header.dart';
 import 'package:event_guide/data/agenda-item.dart';
 import 'package:flutter/material.dart';
 
