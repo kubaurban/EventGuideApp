@@ -1,3 +1,6 @@
+import 'package:event_guide/agenda.dart';
+import 'package:event_guide/announcements/announcements.dart';
+import 'package:event_guide/data/agenda/first-day.dart';
 import 'package:event_guide/home-page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +24,15 @@ class AppRoot extends StatelessWidget {
                   theme: ThemeData(
                     primarySwatch: Colors.lightGreen,
                   ),
-                  home: const Material(
-                    child: HomePage(),
-                  ));
+                  initialRoute: '/',
+                  routes: {
+                    '/': (context) => const HomePage(),
+                    '/first-day': (context) => const Agenda(
+                          title: 'First day',
+                          items: firstDay,
+                        ),
+                    '/announcements': (context) => const Announcements(),
+                  });
             default:
               return const ColoredBox(
                 color: Colors.white,
