@@ -1,6 +1,7 @@
 import 'package:event_guide/agenda.dart';
 import 'package:flutter/material.dart';
 
+import 'announcements/announcements.dart';
 import 'data/agenda/first-day.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: const Agenda(items: firstDay));
+        body: const Announcements());
+    // body: const Agenda(items: firstDay));
   }
 }
