@@ -1,13 +1,12 @@
 import 'package:event_guide/data/agenda-item.dart';
-import 'package:event_guide/data/agenda/first-day.dart';
 import 'package:flutter/material.dart';
 
 import 'agenda-item-tile.dart';
 
 class Agenda extends StatelessWidget {
-  const Agenda({super.key});
+  const Agenda({super.key, required this.items});
 
-  static const List<AgendaItem> _items = firstDay;
+  final List<AgendaItem> items;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class Agenda extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              ..._items.map(
+              ...items.map(
                 (j) => AgendaItemTile(
                   item: j,
                 ),
