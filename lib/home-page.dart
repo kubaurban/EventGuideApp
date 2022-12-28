@@ -1,3 +1,4 @@
+import 'package:event_guide/auth/auth-gate.dart';
 import 'package:event_guide/nav-bar/nav-bar.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
             child: const Icon(Icons.menu),
           ),
         ),
-        body: navBarVisible ? const NavBar() : Container(),
+        body: navBarVisible ? const NavBar() : const AuthGate(),
       ),
     );
   }
