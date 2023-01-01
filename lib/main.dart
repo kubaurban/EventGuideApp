@@ -21,44 +21,46 @@ class AppRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Firebase.initializeApp(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Provider(
-                create: (_) => AuthService(
-                  firebaseAuth: FirebaseAuth.instance,
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+            return Provider(
+              create: (_) => AuthService(
+                firebaseAuth: FirebaseAuth.instance,
+              ),
+              child: BlocProvider(
+                create: (ctx) => AuthCubit(
+                  authService: ctx.read(),
                 ),
-                child: BlocProvider(
-                  create: (ctx) => AuthCubit(
-                    authService: ctx.read(),
+                child: MaterialApp(
+                  title: 'Event Name',
+                  theme: ThemeData(
+                    primarySwatch: Colors.lightGreen,
                   ),
-                  child: MaterialApp(
-                      title: 'Event Name',
-                      theme: ThemeData(
-                        primarySwatch: Colors.lightGreen,
-                      ),
-                      initialRoute: '/',
-                      routes: {
-                        '/': (context) => const HomePage(),
-                        '/first-day': (context) => const Agenda(
-                              title: 'First day',
-                              items: firstDay,
-                            ),
-                        '/announcements': (context) => const Announcements(),
-                      }),
+                  initialRoute: '/',
+                  routes: {
+                    '/': (context) => const HomePage(),
+                    '/first-day': (context) => const Agenda(
+                          title: 'First day',
+                          items: firstDay,
+                        ),
+                    '/announcements': (context) => const Announcements(),
+                  },
                 ),
-              );
-            default:
-              return const ColoredBox(
-                color: Colors.white,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.blue,
-                  ),
+              ),
+            );
+          default:
+            return const ColoredBox(
+              color: Colors.white,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
                 ),
-              );
-          }
-        });
+              ),
+            );
+        }
+      },
+    );
   }
 }
