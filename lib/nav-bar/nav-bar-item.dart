@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class NavBarItem extends StatelessWidget {
-  const NavBarItem({super.key, required this.content, required this.route});
+  const NavBarItem({super.key, required this.content, this.onClick});
 
   final String content;
-  final String route;
+  final void Function()? onClick;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       radius: 0,
       highlightColor: const Color.fromARGB(101, 121, 129, 122),
-      onTap: () => Navigator.pushNamed(context, route),
+      onTap: onClick,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

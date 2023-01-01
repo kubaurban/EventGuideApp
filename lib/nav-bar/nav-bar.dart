@@ -1,5 +1,8 @@
 import 'package:event_guide/nav-bar/nav-bar-item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../auth/auth-cubit.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -8,28 +11,37 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
-        children: const [
-          SizedBox(height: 10),
+        children: [
+          const SizedBox(height: 10),
           NavBarItem(
             content: 'Home',
-            route: '/',
+            onClick: () => Navigator.pushNamed(context, '/'),
           ),
           NavBarItem(
             content: 'First day',
-            route: '/first-day',
+            onClick: () => Navigator.pushNamed(context, '/first-day'),
           ),
           NavBarItem(
             content: 'Second day',
-            route: '/first-day',
+            onClick: () => Navigator.pushNamed(context, '/first-day'),
           ),
           NavBarItem(
             content: 'Third day',
-            route: '/first-day',
+            onClick: () => Navigator.pushNamed(context, '/first-day'),
           ),
-          NavBarItem(
-            content: 'Announcements',
-            route: '/announcements',
-          ),
+          if (context.read<AuthCubit>().authService.isSignedIn) ...[
+            NavBarItem(
+              content: 'Announcements',
+              onClick: () => Navigator.pushNamed(context, '/announcements'),
+            ),
+            NavBarItem(
+              content: 'Sign out',
+              onClick: () {
+                context.read<AuthCubit>().signOut();
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+          ]
         ],
       ),
     );
