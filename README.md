@@ -21,50 +21,67 @@ Major purpose of the application is to provide event participants with:
 
 - see and download any earlier provided by organizers documents, texts or other attachments related to the event (e.g. event regulations, list of special guests with their photos and concise description, event description or aim, ...)
 
-## User stories
+## Screens
 
-### User
+App consists of following screens:
+
+- Home screen - allows user to sign in and if user is signed in it displays basic info about event
+
+- First/Second/Third day - each screen presents event agenda for corresponding day
+
+- Announcements - allows users to place announcements and see them on a chat-looking table
+
+App also has left nav bar to navigate between these screens.
+
+## User stories
 
 As a user, I can...
 
+- sign in.
+
 - see event agenda for each event day.
 
-- see agenda items with properties mentioned in *Project description*.
+- see agenda items with properties mentioned in Project description.
 
-- be notified of an approaching\*\*\*\* activity.
+- be notified of an approaching activity.
 
-- see organizers' real time announcements on intended board.
+- post on announcement board.
 
-- see any additionally provided by organizers text.
+- see real time announcements on intended board.
 
-- download any provided by organizers attached files.
+## Integrations
 
-- \*\* specify particular agenda items to be notified of.
+App uses Firebase for user authentication and Firestore for announcements storage. Thus, app has offline support and synchronization between devices. Moreover, app uses Firebase Cloud Messaging for push notifications.
 
-- \*\*\* be notified of a new announcement on the announcement board.
+## Database schema
 
-- \*\*\*\* set how much time before activity start should I be notified of it.
+Database schema is very simple. It stores announcements in messages collection of type:\
+{\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author: string;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: string;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamp: Date;\
+}
 
-As a user, I cannot...
+## Future development
 
-- put any message on announcement board.
+- enable user to:
 
-### Organizer
+  - be notified of a new announcement on the announcement board.
 
-As an organizer, I can...
+  - set how much time before activity start should I be notified of it.
+  
+  - subscribe for notifications to a specific event.
 
-- put new announcement on intended board.
+- add authorization for organizers and allow them to:
 
-- do everything user can do.
+  - change agenda items' start and end time during event duration.
 
-- \* change agenda items' start and end time during event duration.
+  - exclusively add announcements on a board (?).
 
-## Possible enhancements (marked with stars)
+- notifications logic improvement:
 
-\* list of agenda items could be dynamic - organizers could be able to change during the event lifetime agenda items' start and end time
+  - automatic generation instead of manual scheduling.
 
-\*\* user can specify which agenda items wants to follow (to be notified of)
-
-\*\*\* notification of new announcement might be also send
-
-\*\*\*\* user can set how much time before activity start notification of it should be send.
+  - goto specific event on notification click.
+  
+  - UI improvement.
