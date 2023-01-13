@@ -1,9 +1,12 @@
 import 'package:event_guide/auth/auth-gate.dart';
 import 'package:event_guide/nav-bar/nav-bar.dart';
+import 'package:event_guide/notifications/notifications-service.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.notificationsService});
+
+  final NotificationsService notificationsService;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -27,5 +30,11 @@ class _HomePageState extends State<HomePage> {
         body: navBarVisible ? const NavBar() : const AuthGate(),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.notificationsService.registerNotification();
   }
 }
