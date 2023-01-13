@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:event_guide/auth/auth-cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -42,14 +43,15 @@ class _AnnouncementsState extends State<Announcements> {
               ),
               body: Stack(children: [
                 Column(
-                  children: const [
-                    Expanded(
+                  children: [
+                    const Expanded(
                       child: MessageList(),
                     ),
-                    Divider(
+                    const Divider(
                       color: Colors.grey,
                     ),
-                    MessageBox(),
+                    MessageBox(
+                        author: context.read<AuthCubit>().authService.userName),
                   ],
                 ),
                 if (navBarVisible) const NavBar()

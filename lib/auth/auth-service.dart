@@ -24,6 +24,11 @@ class AuthService {
 
   String get userEmail => _firebaseAuth.currentUser!.email!;
 
+  String get userName =>
+      _firebaseAuth.currentUser!.email! != "admin@niepodam.pl"
+          ? "user"
+          : "admin";
+
   Future<SignInResult> signInWithEmail(
     String email,
     String password,
