@@ -1,6 +1,8 @@
 import 'package:event_guide/agenda/agenda.dart';
 import 'package:event_guide/announcements/announcements.dart';
 import 'package:event_guide/data/agenda/first-day.dart';
+import 'package:event_guide/data/agenda/second-day.dart';
+import 'package:event_guide/data/agenda/third-day.dart';
 import 'package:event_guide/home-page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,6 +46,14 @@ class AppRoot extends StatelessWidget {
                     '/first-day': (context) => const Agenda(
                           title: 'First day',
                           items: firstDay,
+                        ),
+                    '/second-day': (context) => const Agenda(
+                          title: 'Second day',
+                          items: secondDay,
+                        ),
+                    '/third-day': (context) => const Agenda(
+                          title: 'Third day',
+                          items: thirdDay,
                         ),
                     '/announcements': (context) => const Announcements(),
                   },

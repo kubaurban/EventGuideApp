@@ -6,19 +6,17 @@ class AgendaItem {
     required this.startTime,
     required this.name,
     required this.description,
-    required this.speaker,
     required this.place,
     required this.activity,
+    this.speaker,
     this.endTime,
-    this.displayEndTime = false,
   });
 
   final TimeOfDay startTime;
   final TimeOfDay? endTime;
   final String name;
   final String description;
-  final String speaker;
+  final String? speaker;
   final String place;
   final Activity activity;
-  final bool displayEndTime;
 }

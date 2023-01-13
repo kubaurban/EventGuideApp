@@ -23,11 +23,11 @@ class NavBar extends StatelessWidget {
           ),
           NavBarItem(
             content: 'Second day',
-            onClick: () => Navigator.pushNamed(context, '/first-day'),
+            onClick: () => Navigator.pushNamed(context, '/second-day'),
           ),
           NavBarItem(
             content: 'Third day',
-            onClick: () => Navigator.pushNamed(context, '/first-day'),
+            onClick: () => Navigator.pushNamed(context, '/third-day'),
           ),
           if (context.read<AuthCubit>().authService.isSignedIn) ...[
             NavBarItem(

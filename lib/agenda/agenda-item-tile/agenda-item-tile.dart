@@ -44,7 +44,8 @@ class _AgendaItemTileState extends State<AgendaItemTile> {
                 ),
                 const SizedBox(height: 10),
                 Text('Place: ${widget.item.place}'),
-                Text('Speaker: ${widget.item.speaker}'),
+                if (widget.item.speaker != null)
+                  Text('Speaker: ${widget.item.speaker}'),
                 Text('Activity: ${widget.item.activity.description}'),
                 const SizedBox(height: 10),
                 Text(widget.item.description),

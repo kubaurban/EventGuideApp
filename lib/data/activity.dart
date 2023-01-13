@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 enum Activity {
-  conference('Conference', Color.fromARGB(210, 142, 255, 127)),
-  movement('Movement', Color.fromARGB(166, 255, 60, 17)),
-  eating('Eating', Color.fromARGB(125, 250, 237, 0)),
-  groups('Groups', Color.fromARGB(210, 0, 183, 250)),
-  event('Event', Color.fromARGB(210, 237, 0, 250));
+  conference('Conference', Color.fromARGB(99, 4, 105, 46)),
+  movement('Movement', Color.fromARGB(160, 219, 46, 7)),
+  eating('Eating', Color.fromARGB(173, 255, 199, 79)),
+  groups('Groups', Color.fromARGB(176, 51, 168, 211)),
+  event('Event', Color.fromARGB(169, 241, 104, 24));
 
   final String description;
   final Color color;
