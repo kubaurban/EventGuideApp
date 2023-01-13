@@ -12,7 +12,21 @@ class AuthGate extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         if (state is SignedInState) {
-          return Container();
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  FlutterLogo(
+                    size: 200,
+                  ),
+                  SizedBox(height: 10),
+                  Text('Some event details'),
+                ],
+              ),
+            ),
+          );
         } else if (state is SignedOutState) {
           return SignInPage(
             state: state,
